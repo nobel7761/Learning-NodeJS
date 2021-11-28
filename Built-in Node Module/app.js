@@ -1,8 +1,17 @@
-const MyEvent = require('./myEvent');
-const myEvent = new MyEvent();
+const http = require('http');
+const server = http.createServer((request, response) => {
+    if (request.url === '/') {
+        response.write('Hello World');
+        response.end();
+    }
+    if (request.url === '/students') {
+        response.write(JSON.stringify([
+            { name: 'Habibur' },
+            { name: 'Nobel' }
+        ]));
+        response.end();
+    }
+})
 
-myEvent.on('event1', () => {
-    console.log('Event 1 Triggered!');
-});
-
-myEvent.function1();
+server.listen(3000);
+console.log("Listening on post 3000.....");
