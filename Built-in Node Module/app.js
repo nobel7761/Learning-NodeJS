@@ -1,18 +1,8 @@
-const EventEmitter = require('events');
-const emitter = new EventEmitter();
+const MyEvent = require('./myEvent');
+const myEvent = new MyEvent();
 
-emitter.on('event1', () => {
-    console.log("Event 1 Called");
-})
+myEvent.on('event1', () => {
+    console.log('Event 1 Triggered!');
+});
 
-emitter.on('event2', () => {
-    console.log("Event 2 Called");
-})
-
-emitter.on('event3', (e) => {
-    console.log(`Event 3 Called! Name: ${e.name} Age: ${e.age}`);
-})
-
-
-emitter.emit('event1');
-emitter.emit('event3', { name: 'Habibur Nobel', age: 26 });
+myEvent.function1();
