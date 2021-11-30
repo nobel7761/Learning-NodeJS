@@ -1,15 +1,14 @@
 console.log('Line 1');
 
-const student = getStudent(1);
-
+getStudent(2, (student) => {
+    console.log(student);
+})
 
 console.log('Line 2');
 
-function getStudent(id) {
+function getStudent(id, callback) {
     setTimeout(() => {
-        console.log('Fetching Student Data.....');
-        return { id: id, name: 'Rahim' };
-    }, 3000);
+        console.log('Fetching Student Data...');
+        callback({ id: id, name: 'Nobel' });
+    }, 3000)
 }
-
-console.log(student);
