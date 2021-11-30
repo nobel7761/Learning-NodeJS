@@ -1,15 +1,27 @@
 console.log('Line 1');
 
-getStudent(3)
-    .then(student => {
-        console.log(student);
-        return getStudentCourses(student);
-    })
-    .then(courses => {
-        console.log(courses);
-        return getStudentMarks(courses);
-    })
-    .then(marks => console.log(marks));
+// getStudent(3)
+//     .then(student => getStudentCourses(student))
+//     .then(courses => getStudentMarks(courses))
+//     .then(marks => console.log(marks));
+
+
+
+
+async function studentData() {
+    try {
+        const student = await getStudent(4);
+        const courses = await getStudentCourses(student);
+        const marks = await getStudentMarks(courses);
+        console.log(marks);
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+studentData();
+
+
 
 console.log('Line 2');
 
@@ -17,7 +29,9 @@ function getStudent(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('Fetching Student from Database...');
-            resolve({ id: id, name: 'Nobel' });
+            const student = { id: id, name: 'Nobel' };
+            console.log(student);
+            resolve(student);
         }, 3000);
     })
 
@@ -27,7 +41,10 @@ function getStudentCourses(student) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('Fetching Student Courses from Database...');
-            resolve({ courses: ['JavaScript', 'Python'] })
+            const courses = { courses: ['JavaScript', 'Python'] }
+            // console.log(courses)
+            // resolve(courses)
+            reject("ERROR Occured!")
         }, 3000)
     })
 
