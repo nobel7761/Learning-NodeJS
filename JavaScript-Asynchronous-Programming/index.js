@@ -1,14 +1,18 @@
 console.log('Line 1');
 
-getStudent(2, (student) => {
+getStudent(2, showStudents);
+
+function showMarks(marks) {
+    console.log(marks);
+}
+function showCourses(courses) {
+    console.log(courses);
+    getStudentMarks(courses, showMarks);
+}
+function showStudents(student) {
     console.log(student);
-    getStudentCourses(student, (courses) => {
-        console.log(courses);
-        getStudentMarks(courses, (marks) => {
-            console.log(marks);
-        })
-    })
-})
+    getStudentCourses(student, showCourses);
+}
 
 console.log('Line 2');
 
