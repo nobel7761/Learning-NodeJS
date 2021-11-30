@@ -13,5 +13,5 @@ const server = http.createServer((request, response) => {
     }
 })
 
-server.listen(3000);
+server.listen(3000); //defining port number
 console.log("Listening on post 3000.....");
